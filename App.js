@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, View, Text, FlatList} from 'react-native';
+import { StyleSheet, View, Text, FlatList, TouchableOpacity} from 'react-native';
 
 export default function App() {
 
@@ -13,6 +13,12 @@ export default function App() {
     { name: 'bowser', id: '7'},
   ])
 
+  const pressHandler = (id) => {
+    setPeople((prev) => {
+      return prev.filter( item => item.id !== id);
+    })
+  }
+
 
   return (
     <View style={styles.container}>
@@ -21,7 +27,9 @@ export default function App() {
         keyExtractor={(item) => item.id}
         data={people}
         renderItem={({ item }) => (
-          <Text style={styles.item}>{item.name}</Text>
+          <TouchableOpacity onPress={() => pressHandler(item.id)}>
+            <Text style={styles.item}>{item.name}</Text>
+          </TouchableOpacity>
         )}
       />
       {/* <ScrollView>
