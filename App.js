@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { StyleSheet, View, Text, FlatList} from 'react-native';
+import Header from './components/todo/Header';
 
 export default function App() {
 
@@ -13,7 +14,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      {/* header */}
+      <Header />
       <View style={styles.content}>
         {/* {to do form} */}
         <View style={styles.list}>
