@@ -1,44 +1,30 @@
 import React, {useState} from 'react';
-import { StyleSheet, View, Text, FlatList, TouchableOpacity} from 'react-native';
+import { StyleSheet, View, Text, FlatList} from 'react-native';
 
 export default function App() {
 
-  const [people, setPeople] = useState([
-    { name: 'connie', id: '1'},
-    { name: 'yoshi', id: '2'},
-    { name: 'mario', id: '3'},
-    { name: 'luigi', id: '4'},
-    { name: 'peach', id: '5'},
-    { name: 'toad', id: '6'},
-    { name: 'bowser', id: '7'},
+  const [todos, setTodos] = useState([
+    {text: 'buy coffee', key: 1},
+    {text: 'create an app', key: 2},
+    {text: 'apply to jobs', key:  3},
+    {text: 'do a leetcode practice problem', key: 4}
   ])
-
-  const pressHandler = (id) => {
-    setPeople((prev) => {
-      return prev.filter( item => item.id !== id);
-    })
-  }
 
 
   return (
     <View style={styles.container}>
-      <FlatList 
-        numColumns={2}
-        keyExtractor={(item) => item.id}
-        data={people}
-        renderItem={({ item }) => (
-          <TouchableOpacity onPress={() => pressHandler(item.id)}>
-            <Text style={styles.item}>{item.name}</Text>
-          </TouchableOpacity>
-        )}
-      />
-      {/* <ScrollView>
-      { people.map(person => (
-            <View key={person.key} >
-              <Text style={styles.person}>{person.name}</Text>
-            </View>
-      ))}
-      </ScrollView> */}
+      {/* header */}
+      <View style={styles.content}>
+        {/* {to do form} */}
+        <View style={styles.list}>
+          <FlatList
+            data={todos}
+            renderItem={({item}) => (
+              <Text>{item.text}</Text>
+            )}
+          />
+        </View>
+      </View>
     </View>
   );
 }
@@ -47,15 +33,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    paddingTop: 40,
-    paddingHorizontal: 20
   },
-  item: {
-    marginTop: 24,
-    padding: 30,
-    backgroundColor: 'pink',
-    fontSize: 24,
-    marginHorizontal: 10
+  content: {
+    padding: 40
+  },
+  list: {
+    marginTop: 20
   }
+
 
 });
