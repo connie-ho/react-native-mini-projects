@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { StyleSheet, View, Text, FlatList, TouchableOpacity} from 'react-native';
 
-export default function App() {
+export default function ListExample() {
 
   const [people, setPeople] = useState([
     { name: 'connie', id: '1'},
