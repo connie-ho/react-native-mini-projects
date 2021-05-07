@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { StyleSheet, View, Text, TextInput, Button } from 'react-native'
+import { StyleSheet, View, TextInput, Button } from 'react-native'
 
 const Form = ({submitHandler}) => {
   
@@ -13,11 +13,12 @@ const Form = ({submitHandler}) => {
     <View>
       <TextInput
         style={styles.input}
-        placeholder="New Todo ..."
+        placeholder="New Todo"
         onChangeText={changeHandler}
+        value={text}
       />
       <Button
-        onPress={() => {submitHandler(text)}}
+        onPress={() => {submitHandler(text, setText);}}
         title='Add Todo'
         color='coral'
       />
